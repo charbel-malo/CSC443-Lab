@@ -1,0 +1,33 @@
+body{
+    background: linear-gradient(rgb(214, 200, 255),white);
+    color: rgb(37, 10, 49);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin:0;
+    padding:0;
+    padding-bottom:100px;
+}
+.section{
+    width: 80%;
+    margin:auto;
+    padding-top: 50px;
+    color: rgb(37, 10, 49);
+}
+
+.section:nth-child(even) h2{
+    color: blue;
+}
+.section:nth-child(odd) h2{
+    color: gray;
+}
+.education .title{
+    font-size:1.66em;
+}
+.education .year{
+    color:black;
+}
+.education .desc{
+    color: red;
+}
+table, th, td {
+    border: 1px solid red;
+  }
