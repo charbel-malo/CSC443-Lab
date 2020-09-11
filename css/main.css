@@ -2,6 +2,8 @@ body{
     background: linear-gradient(rgb(29, 12, 77),black);
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin:0;
+    padding:0;
 }
 .section{
     width: 80%;
@@ -52,4 +54,24 @@ body{
     background-color: rgb(140, 108, 255);
     border-radius: 5px;
     margin-top:2px;
+}
+.movies{
+    margin-bottom:300px;
+}
+.movies img{
+    width: 50px;
+}
+.footer{
+    position:fixed;
+    height:25px;
+    width:100%;
+    background-color:white;
+    bottom:0;
+    z-index:999;
+    padding:20px;
+    color: black;
+}
+.footer span{
+    line-height: 25px;
+
 }
