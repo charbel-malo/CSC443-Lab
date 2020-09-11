@@ -1,7 +1,9 @@
 body{
     background: linear-gradient(rgb(29, 12, 77),black);
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-.education{
+.section{
     width: 80%;
     margin:auto;
     padding-top: 50px;
@@ -24,4 +26,30 @@ body{
     height: 200px;
     border-radius: 100%;
     border: 5px solid white;
+}
+.skill-item{
+    height:50px;
+}
+.skill-item img{
+    height:20px;
+}
+.skill-item span{
+    margin-left:20px;
+}
+.skill-meter{
+    display: inline;
+    margin-top:10px;
+    width: 50%;
+    height: 10px;
+    float: right;
+    background-color: rgb(29, 12, 77);
+    border-radius: 5px;
+    padding:2px;
+}
+.skill-fill{
+    width:98%;
+    height: 5px;
+    background-color: rgb(140, 108, 255);
+    border-radius: 5px;
+    margin-top:2px;
 }
