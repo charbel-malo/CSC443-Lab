@@ -1,0 +1,12 @@
+.categories .col-3 .card{
+    background-color: white;
+    border: 2px solid rgba(30, 143, 255, 0.192);
+    transition: all 0.2s ease-in-out;
+}
+.categories .col-3 .card:hover{
+    transform: scale(1.1);
+}
+.welcome-screen{
+    background: #072ce226;
+    border-radius: 20px;
+}
