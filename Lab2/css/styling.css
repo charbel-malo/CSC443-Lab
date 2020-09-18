@@ -9,4 +9,26 @@
 .welcome-screen{
     background: #072ce226;
     border-radius: 20px;
+    margin-top: 20vh;
+}
+.categories{
+}
+.card img{
+    max-width: 100%;
+}
+.col-lg-6 .card{
+    height: 340px;
+    margin-bottom: 30px;
+}
+.card h4{
+    color:dodgerblue;
+    font-weight: bold;
+}
+.card h3{
+    color:dodgerblue;
+    font-weight: bold;
+}
+.card p.info{
+    font-weight: 600;
+    color: red;
 }
