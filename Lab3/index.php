@@ -15,6 +15,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         if($_POST["function"]=="capitalizer"){
             drunkenCapitalizer($_POST["stringfield"]);
         }
+        if($_POST["function"]=="greatestcd"){
+            greatestCD($_POST["integer1"],$_POST["integer2"]);
+        }
+        if($_POST["function"]=="insideout"){
+            insideout($_POST["stringfield"]);
+        }
 
      }
 ?>
@@ -29,6 +35,20 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 <input type="text" name="stringfield" id="capfield"> 
 <input type="hidden" name="function" value="capitalizer">
 <input type="submit"></form>
+
+<h4>insideOut</h4>
+<form action="./index.php" method="post">
+<input type="text" name="stringfield" id="insideoutfield"> 
+<input type="hidden" name="function" value="insideout">
+<input type="submit"></form>
+
+<h4>GCD</h4>
+<form action="./index.php" method="post">
+<input type="number" name="integer1"> 
+<input type="number" name="integer2"> 
+<input type="hidden" name="function" value="greatestcd">
+<input type="submit"></form>
+
 </div>
 </body>
 </html>
@@ -50,5 +70,29 @@ function  drunkenCapitalizer($string){
         $string[$i] = strtoupper($string)[$i];
     }
     echo $string;
+}
+function  greatestCD($int1,$int2){
+    if($int2==0){
+        echo $int1;
+    }
+    else{
+        greatestCD($int2,$int1%$int2);
+    }
+}
+function  insideout($string){
+    $array= explode(',',$string);
+   if(sizeof($array)%2!==0){
+       echo "Array has an odd number of elements please try again";
+       
+   }
+   else{
+       $midpoint = sizeof($array)/2-1;
+       for($j=0;$j<=$midpoint;$j++){
+        echo $array[$midpoint-$j]." ; ";
+       }
+       for($k=1;$k<=$midpoint+1;$k++){
+        echo $array[sizeof($array)-$k]." ; ";
+       }
+   }
 }
 ?>
