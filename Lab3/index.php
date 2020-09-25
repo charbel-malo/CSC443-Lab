@@ -21,8 +21,16 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         if($_POST["function"]=="insideout"){
             insideout($_POST["stringfield"]);
         }
+        if($_POST["function"]=="linesum"){
+            getFileLineSum($_POST["stringfield"],$_POST["linenum"]);
+        }
+        if($_POST["function"]=="fileslist"){
+            getFilesList($_POST["stringfield"]);
+        }
 
      }
+?>
+<?php
 ?>
 <h4>Palindrome checker</h4>
 <form action="./index.php" method="post">
@@ -49,6 +57,19 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 <input type="hidden" name="function" value="greatestcd">
 <input type="submit"></form>
 
+
+<h4>Read file line sum</h4>
+<form action="./index.php" method="post">
+<input type="text" name="stringfield" id="insideoutfield"> 
+<input type="number" name="linenum" >
+<input type="hidden" name="function" value="linesum">
+<input type="submit"></form>
+
+<h4>Directories file list</h4>
+<form action="./index.php" method="post">
+<input type="text" name="stringfield" id="insideoutfield"> 
+<input type="hidden" name="function" value="fileslist">
+<input type="submit"></form>
 </div>
 </body>
 </html>
@@ -95,4 +116,31 @@ function  insideout($string){
        }
    }
 }
+function getFileLineSum($filename,$filenum){
+$data = file($filename);
+$line = $data[$filenum];
+$nums = explode(' ',$line);
+$sum = 0;
+foreach($nums as $num){
+$sum = $sum+intval($num);
+}
+print_r($sum);}
+
+function getTasksList($filename){
+$data = file($filename);
+foreach($data as $line){
+$tasks = explode(':',$line)[1];
+}
+$nums = explode(' ',$line);
+$sum = 0;
+foreach($nums as $num){
+$sum = $sum+intval($num);
+}
+print_r($sum);}
+
+function getFilesList($dir){
+    $data = scandir($dir);
+    foreach($data as $file){
+    echo $file.'<br>';
+    }}
 ?>

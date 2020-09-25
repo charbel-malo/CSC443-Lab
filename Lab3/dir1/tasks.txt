@@ -1,0 +1,7 @@
+Monday: Clean,Cook,Study,Work,Call university,Groceries,Dentist,Water plants
+Tuesday: Clean,Cook,Study,Work,Call university,Groceries,Dentist,Water plants
+Wednesday: Clean,Cook,Study,Work,Call university,Groceries,Dentist,Water plants
+Thursday: Clean,Cook,Study,Work,Call university,Groceries,Dentist,Water plants
+Friday: Clean,Cook,Study,Work,Call university,Groceries,Dentist,Water plants
+Saturday: Clean,Cook,Study,Work,Call university,Groceries,Dentist,Water plants
+Sunday: Clean,Cook,Study,Work,Call university,Groceries,Dentist,Water plants
