@@ -1,11 +1,13 @@
 <?php
 // Include the database configuration file
-include 'dbConfig.php';
+require("./database.php");
 $statusMsg = '';
 
 // File upload path
-$targetDir = "uploads/";
+$targetDir = "users/";
+print_r($_FILES);
 $fileName = basename($_FILES["file"]["name"]);
+$descr = "successful update";
 $targetFilePath = $targetDir . $fileName;
 $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 
@@ -16,7 +18,7 @@ if(isset($_POST["submit"]) && !empty($_FILES["file"]["name"])){
         // Upload file to server
         if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
             // Insert image file name into database
-            $insert = $db->query("INSERT into images (file_name, uploaded_on) VALUES ('".$fileName."', NOW())");
+            $insert = $connection->query("UPDATE `users` SET `imgurl`='".$fileName."',`descr`='".$descr."' WHERE 1");
             if($insert){
                 $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
             }else{

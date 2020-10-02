@@ -1,3 +1,22 @@
+<?php
+// Include the database configuration file
+require("database.php");
+// Get images from the database
+$query = $connection->query("SELECT * FROM `users` WHERE `username`='".$_GET['username']."'");
+
+if($query){
+    while($row = $query->fetch_assoc()){
+        $imageURL = 'users/'.$row["imgurl"];
+}
+}else{  } ?>
+<?php
+$user=$_GET['username'];
+
+$userobj = selectQuery($connection,"select * from users where username='$user'")[0];
+$descr = $userobj["descr"];
+if($userobj["imgurl"]=="")
+header('Location: user.php');
+?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -6,7 +25,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Lab 4</title>
+        <title><?php echo $user ?></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -16,7 +35,12 @@
             body {
                 padding-top: 50px;
                 padding-bottom: 20px;
-            }
+            }hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #000;
+}
         </style>
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/main.css">
@@ -55,19 +79,15 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-        <h1>Welcome back user!</h1>
+        <h1>Hello <?php echo $user?>! </h1>
        <div class="row">
-         <div class="col-lg-3">
-        <form action="redirect.php" method="GET">
-          <fieldset>
-          <h4>Enter your credentials below:</h4>
-          <div class="form-group">Username: <input name="txt_username" class="form-control"/></div>
-          <div class="form-group">Password: <input type="password"  name="txt_password" class="form-control"/><br></div>
-          <input type="submit" class="btn btn-primary" value="Sign in"/> <br><span> Don't have an account? </span>
-          <a href="welcome.html" > Sign up </a>
-          </fieldset>
-          </form>
-          <br><br><br><br><br>
+         <div class="col-lg-9">
+            <h3>Introduction</h3><hr>
+          <h4><?php echo $descr ?></h4><br>
+            <h3>Image</h3><hr>
+        <img src="<?php echo $imageURL?>" height="100px">
+        
+          <br>
           </div>
           </div>
           

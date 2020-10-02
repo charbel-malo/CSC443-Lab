@@ -89,4 +89,5 @@ function alert($msg) {
     echo "<script type='text/javascript'>alert('$msg');</script>";
 }
 
+$connection = connectDb("localhost","root","","db_lab4");
 ?>

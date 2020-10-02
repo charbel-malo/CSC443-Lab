@@ -41,15 +41,17 @@ if($_SERVER["REQUEST_METHOD"]=="GET" && isset($_GET["txt_username"]))
     if($result==-1)
     {
         alert("password is wrong");
+        header('Location: index.php');
     }
     else if($result==-2)
     {
         alert("user does not exist");
+        header('Location: index.php');
     }
     else if($result==1)
     {
         alert("signed in");
-        header("Location:./signin.html");
+        header("Location: user.php?username=".$_GET["txt_username"]."");
     }
 
 }

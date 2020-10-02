@@ -3,13 +3,10 @@ $user=$_GET['username'];
 // $password = $GET['password'];
 
 require("./database.php");
-//$connection = connectServer("localhost","root",file_get_contents("./pass.txt"));
-//$result= executeQuery($connection,"create database test_db_2");
-$connection = connectDb("localhost","root","","db_lab4");
+
 $userobj = selectQuery($connection,"select * from users where username='$user'")[0];
-print_r($userobj);
 if($userobj["imgurl"]!="")
-header('Location: user.html');
+header('Location: profile.php?username='.$user.'');
 ?>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
@@ -19,7 +16,7 @@ header('Location: user.html');
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <title><?php $user ?></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -71,12 +68,13 @@ header('Location: user.html');
         <h1>Hello <?php echo $user?>!</h1>
        <div class="row">
          <div class="col-lg-9">
-        <form action="redirect.php" method="GET">
+        <form action="upload.php" method="POST" enctype="multipart/form-data">
           <fieldset>
           <h4>Enter your credentials below:</h4>
-          <div class="form-group">Profile Picture: <input type="file" name="txt_imgurl" class="form-control" /></div>
-          <div class="form-group">Description: <textarea  name="text_descr" class="form-control"></textarea></div>
-          <input type="submit" class="btn btn-primary" value="Submit info"/> <br>
+          <div class="form-group">Add image: <input type="file" name="file" class="form-control" /></div>
+          <div class="form-group">
+              Introduce yourself to us: <textarea  name="text_descr" class="form-control"></textarea></div>
+          <input  name="submit" type="submit" class="btn btn-primary" value="Submit info"/> <br>
           </fieldset>
           </form>
           <br><br><br><br><br>
