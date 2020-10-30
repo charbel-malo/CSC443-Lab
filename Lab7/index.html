@@ -1,0 +1,79 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Lab 6</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <title>Look I'm AJAXing!</title>
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> <!-- load bootstrap via CDN -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> <!-- load jquery via CDN -->
+    </head>
+    <body>
+      <div class="col-sm-6 col-sm-offset-3">
+
+        <h1>Sign Up Form</h1>
+    
+        <!-- OUR FORM -->
+        <form action="process.php" method="POST" id="signupform">
+    <div class="box-alert hidden" id="error"> <i class="fa fa-exclamation-triangle"></i> Authentication failed please try again!</div>
+            <!-- NAME -->
+            <div id="name-group" class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" name="name" placeholder="Henry Pym">
+                <!-- errors will go here -->
+            </div>
+    
+            <!-- EMAIL -->
+            <div id="email-group" class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" name="email" placeholder="rudd@avengers.com">
+                <!-- errors will go here -->
+            </div>
+    
+            <!-- SUPERHERO ALIAS -->
+            <div id="superhero-group" class="form-group">
+                <label for="birthday">Birthdate</label>
+                <input type="date" class="form-control" name="birthday" placeholder="Ant Man">
+                <!-- errors will go here -->
+            </div>
+    
+            <button type="submit" id="submit" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
+    
+        </form>
+        <div class="btn btn-primary hidden" id="processing"><span>Processing request...</span></div>
+        <div class="btn btn-primary hidden" id="success"><span>Authentication successfull! Redirecting...</span></div>
+    </div>
+
+          <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script> -->
+          <script src="js/jquery.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
+<!doctype html>
+<html>
+<head>
+   
