@@ -1,39 +1,75 @@
 <?php
 require('database.php');
-$errors         = array();      // array to hold validation errors
-$data           = array();      // array to pass back data
-
-// validate the variables ======================================================
-// if any of these variables don't exist, add an error to our $errors array
-
+$connection = connectDb("localhost","root","","db_lab7");
+$errors         = array();     
+$data           = array();      
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
 if (empty($_POST['name']))
     $errors['name'] = 'Name is required.';
 
 if (empty($_POST['email']))
     $errors['email'] = 'Email is required.';
 
-if (empty($_POST['birthday']))
-    $errors['birthday'] = 'Superhero alias is required.';
+    if (empty($_POST['password']))
+    $errors['password'] = 'password is required.';
+    if (empty($_POST['birthday']))
+        $errors['birthday'] = 'Birthday is required.';
 
-// return a response ===========================================================
-
-// if there are any errors in our errors array, return a success boolean of false
 if ( ! empty($errors)) {
 
-    // if there are items in our errors array, return those errors
     $data['success'] = false;
     $data['errors']  = $errors;
 } else {
+    $result= addUser($connection,"users",$_POST["name"],$_POST["email"],$_POST["password"],$_POST["birthday"]);
 
-    // if there are no errors process our form, then return a message
-
-    // DO ALL YOUR FORM PROCESSING HERE
-    // THIS CAN BE WHATEVER YOU WANT TO DO (LOGIN, SAVE, UPDATE, WHATEVER)
-
-    // show a message of success and provide a true success variable
+    if($result==-1)
+    {
+        $errors['user'] = 'User already exists.';
+        $data['success'] = false;
+    $data['errors']  = $errors;
+    }
+   
+    else if($result==1)
+    {
     $data['success'] = true;
     $data['message'] = 'Success!';
+    }
+     
 }
 
-// return all our data to an AJAX call
-echo json_encode($data);?>
+echo json_encode($data);}
+
+if($_SERVER["REQUEST_METHOD"]=="GET")
+{
+
+if (empty($_GET['email']))
+    $errors['email'] = 'Email is required.';
+
+    if (empty($_GET['password']))
+    $errors['password'] = 'password is required.';
+    
+if ( ! empty($errors)) {
+
+    $data['success'] = false;
+    $data['errors']  = $errors;
+} else {
+    $result= signInUser($connection,"users",$_GET["email"],$_GET["password"]);
+
+    if($result==-1)
+    {
+        $errors['user'] = 'Wrong credentials.';
+        $data['success'] = false;
+    $data['errors']  = $errors;
+    }
+   
+    else if($result==1)
+    {
+    $data['success'] = true;
+    $data['message'] = 'Success!';
+    }
+     
+}
+
+echo json_encode($data);
+}?>

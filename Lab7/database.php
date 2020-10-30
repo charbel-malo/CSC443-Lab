@@ -41,43 +41,40 @@ function executeQuery($connection, $query)
     return $result;
 }
 
-function userExists($connection, $tablename, $username)
+function userExists($connection, $tablename, $email)
 {
-    $result= selectQuery($connection,"select * from $tablename where username='$username'");
+    $result= selectQuery($connection,"select * from $tablename where email='$email'");
     return count($result)>0;
 }
 function checkPasswordMatch($password,$ccpassword)
 {
     return ($password==$ccpassword);
 }
-function addUser($connection, $tablename, $password, $ccpassword, $username)
+function addUser($connection, $tablename, $username,$email, $password, $birthday)
 {
-    if(userExists($connection,$tablename,$username))
+    if(userExists($connection,$tablename,$email))
     {
         return -1;
     }
-    if(!checkPasswordMatch($password,$ccpassword))
-    {
-        return -2;
-    }
+    
     $hashedPassword= md5($password);
     
-    executeQuery($connection,"Insert into $tablename (username,password) values ('$username','$hashedPassword')");
+    executeQuery($connection,"Insert into $tablename (name,email,password,birthday) values ('$username','$email','$hashedPassword','$birthday')");
     return 1;
 }
 
 function passwordMatches($connection,$tablename,$username,$password)
 {
-    $result= selectQuery($connection,"Select password from $tablename where username='$username'");
+    $result= selectQuery($connection,"Select password from $tablename where email='$username'");
     return $result[0]["password"]==md5($password);
     
 }
 
-function signInUser($connection,$tablename,$username,$password)
+function signInUser($connection,$tablename,$email,$password)
 {
-    if(userExists($connection,$tablename,$username) )
+    if(userExists($connection,$tablename,$email) )
     {
-        if(passwordMatches($connection,$tablename,$username,$password))
+        if(passwordMatches($connection,$tablename,$email,$password))
         {
             return 1;  
         }

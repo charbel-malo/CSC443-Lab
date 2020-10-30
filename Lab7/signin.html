@@ -30,17 +30,12 @@
     <body>
       <div class="col-sm-6 col-sm-offset-3">
 
-        <h1>Sign Up Form</h1>
+        <h1>Sign in Form</h1>
     
         <!-- OUR FORM -->
-        <form action="process.php" method="POST" id="signupform">
+        <form action="process.php" method="GET" id="signinform">
     <div class="box-alert hidden" id="error"> <i class="fa fa-exclamation-triangle"></i> Authentication failed please try again!</div>
-            <!-- NAME -->
-            <div id="name-group" class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" name="name" placeholder="Henry Pym">
-                <!-- errors will go here -->
-            </div>
+      
     
             <!-- EMAIL -->
             <div id="email-group" class="form-group">
@@ -54,12 +49,7 @@
                 <!-- errors will go here -->
             </div>
     
-            <!-- SUPERHERO ALIAS -->
-            <div id="superhero-group" class="form-group">
-                <label for="birthday">Birthdate</label>
-                <input type="date" class="form-control" name="birthday" placeholder="Ant Man">
-                <!-- errors will go here -->
-            </div>
+        
     
             <button type="submit" id="submit" class="btn btn-success">Submit <span class="fa fa-arrow-right"></span></button>
     
