@@ -32,6 +32,7 @@ $(document).ready(function() {
                 // log data to the console so we can see
                 console.log(data);
 
+                window.location.href = "signin.html";
                 // here we will handle errors and validation messages
             })
             .fail(function(data) {
@@ -75,7 +76,7 @@ $(document).ready(function() {
                     $('#error').removeClass('hidden');}
                 // log data to the console so we can see
                 console.log(data);
-
+                window.location.href = "user.html";
                 // here we will handle errors and validation messages
             })
             .fail(function(data) {
